@@ -16,13 +16,13 @@ public class AccionTrigger : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter(Collider otro)
     {
-        if(otro.tag == "Jugador" && accionEnter!="")
+        if(otro.tag == "Player" && accionEnter!="")
             mt.AccionTrigger(this.gameObject,accionEnter);
     }
 
     private void OnTriggerExit(Collider otro)
     {
-        if(otro.tag == "Jugador" && accionExit!="")
+        if(otro.tag == "Player" && accionExit!="")
             mt.AccionTrigger(this.gameObject,accionExit);  
     }
 }

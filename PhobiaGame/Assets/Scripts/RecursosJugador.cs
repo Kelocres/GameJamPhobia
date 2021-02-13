@@ -87,4 +87,9 @@ public class RecursosJugador : MonoBehaviour
         barraLinterna.SetValor(pilaLinterna_actual);
         if(pilaLinterna_actual <= 0f) linterna.Apagar();
     }
+
+    public void SumarContador(string tipoValor, float valor)
+    {
+        Debug.Log("Has conseguido "+valor +" puntos de "+tipoValor);
+    }
 }

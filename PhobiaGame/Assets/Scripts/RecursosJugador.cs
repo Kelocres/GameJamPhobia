@@ -110,4 +110,16 @@ public class RecursosJugador : MonoBehaviour
             barraLinterna.SetValor(pilaLinterna_actual);
         }
     }
+
+    public void RestarVida(float valor)
+    {
+        vida_actual -= valor;
+        if(vida_actual < 0)     vida_actual = 0f;
+        barraVida.SetValor(vida_actual);
+
+        if(vida_actual == 0)
+        {
+            //Muerte y game over
+        }
+    }
 }

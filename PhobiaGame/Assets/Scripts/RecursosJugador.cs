@@ -91,5 +91,23 @@ public class RecursosJugador : MonoBehaviour
     public void SumarContador(string tipoValor, float valor)
     {
         Debug.Log("Has conseguido "+valor +" puntos de "+tipoValor);
+        if(tipoValor == "Curacion")
+        {
+            vida_actual += valor;
+            if(vida_actual > vida_max)  vida_actual = vida_max;
+            barraVida.SetValor(vida_actual);
+        }
+        else if(tipoValor == "Comida")
+        {
+            hambre_actual += valor;
+            if(hambre_actual > hambre_max)  hambre_actual = hambre_max;
+            barraHambre.SetValor(hambre_actual);
+        }
+        else if(tipoValor == "PilaLinterna")
+        {
+            pilaLinterna_actual += valor;
+            if(pilaLinterna_actual > pilaLinterna_max) pilaLinterna_actual = pilaLinterna_max;
+            barraLinterna.SetValor(pilaLinterna_actual);
+        }
     }
 }

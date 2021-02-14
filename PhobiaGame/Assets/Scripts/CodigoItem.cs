@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CodigoItem : MonoBehaviour
 {
-    //Valores posibles se tipoObjeto: "Comida", "Curacion", "PilaLinterna"
+    //Valores posibles se tipoObjeto: "Comida", "Curacion", "PilaLinterna", "Seta"
     public string tipoObjeto;
     public float valorObjeto;
 

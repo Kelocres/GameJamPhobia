@@ -31,6 +31,8 @@ public class RecursosJugador : MonoBehaviour
     //Contador de tiempo
     private float contadorTiempo;
     private int contadorSegundos;
+
+    ControlMutacionJugador controlMutacion;
     
 
     // Start is called before the first frame update
@@ -45,6 +47,7 @@ public class RecursosJugador : MonoBehaviour
         contadorSegundos = 0;
 
         linterna = GetComponentInChildren<ControlLinterna>();
+        controlMutacion = GetComponent<ControlMutacionJugador>();
         barraVida.Inicializar(vida_max, vida_actual);
         barraHambre.Inicializar(hambre_max, hambre_actual);
         barraLinterna.Inicializar(pilaLinterna_max, pilaLinterna_actual);
@@ -97,11 +100,13 @@ public class RecursosJugador : MonoBehaviour
             if(vida_actual > vida_max)  vida_actual = vida_max;
             barraVida.SetValor(vida_actual);
         }
-        else if(tipoValor == "Comida")
+        else if(tipoValor == "Comida" || tipoValor == "Seta")
         {
             hambre_actual += valor;
             if(hambre_actual > hambre_max)  hambre_actual = hambre_max;
             barraHambre.SetValor(hambre_actual);
+            //Si es una seta, además de alimentar desencadena una transformación
+            controlMutacion.ConsumirSeta();
         }
         else if(tipoValor == "PilaLinterna")
         {

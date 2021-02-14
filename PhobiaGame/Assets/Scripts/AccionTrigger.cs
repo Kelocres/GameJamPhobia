@@ -5,7 +5,7 @@ using UnityEngine;
 public class AccionTrigger : MonoBehaviour
 {
     ManejaTriggers mt;
-    public CodigoEstalactita estalactita;
+    public CodigoEstalactita[] estalactitas;
     //Envian un mensaje al maneja triggers, que le indica lo que debe hacer
     public string accionEnter = "";
     public string accionExit = "";
@@ -18,10 +18,15 @@ public class AccionTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider otro)
     {
         if(otro.tag == "Player" && accionEnter!="")
-            if(estalactita==null)
+            if(estalactitas==null)
                 mt.AccionTrigger(null,accionEnter);
-            else
-                mt.AccionTrigger(estalactita, accionEnter);
+            else if(accionEnter=="Cae una estalactita")
+                {
+                    foreach(CodigoEstalactita estal in estalactitas)
+                    {
+                        estal.ActivarCaida();
+                    }
+                }
     }
 
     private void OnTriggerExit(Collider otro)

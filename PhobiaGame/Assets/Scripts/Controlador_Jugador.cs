@@ -9,18 +9,18 @@ public class Controlador_Jugador : MonoBehaviour
     Vector3 inputMover;
     public float velocitat = 1f;
     //Animator animacion;
+    public bool estaVivo;
     
     void OnEnable()
     {
-        
+        estaVivo = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        ControlMovimientoOrientacion();
-
+        if(estaVivo)
+            ControlMovimientoOrientacion();
 
     }
 

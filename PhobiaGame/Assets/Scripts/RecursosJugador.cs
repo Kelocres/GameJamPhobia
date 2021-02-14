@@ -20,7 +20,7 @@ public class RecursosJugador : MonoBehaviour
     private float ansiedad_max = 100f;
     public float ansiedad_actual;
     private int intervalo_ansiedad = 1;
-    private int cuentaLuces;
+    public int cuentaLuces;
 
     //Variables para la linterna
     private float pilaLinterna_max = 20f;
@@ -149,8 +149,19 @@ public class RecursosJugador : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider otro)
+    public void SumarLuces()
     {
+        cuentaLuces++;
+    }
+
+    public void RestarLuces()
+    {
+        cuentaLuces--;
+    }
+
+    /*private void OnTriggerEnter(Collider otro)
+    {
+        Debug.Log(otro.tag);
         if(otro.tag=="Fuego") 
         {  
             Debug.Log("Has encontrado una fuente de luz");
@@ -161,5 +172,5 @@ public class RecursosJugador : MonoBehaviour
     private void OnTriggerExit(Collider otro)
     {
         if(otro.tag=="Fuego")   cuentaLuces --;
-    }
+    }*/
 }

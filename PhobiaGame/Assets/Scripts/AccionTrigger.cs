@@ -6,7 +6,14 @@ public class AccionTrigger : MonoBehaviour
 {
     ManejaTriggers mt;
     public CodigoEstalactita[] estalactitas;
+
     //Envian un mensaje al maneja triggers, que le indica lo que debe hacer
+    //Mensajes posibles:
+    //      "El monstruo empieza a perseguir"
+    //      "Cae una estalactita"
+    //      "Sumar fuente de luz"   (para accionEnter)
+    //      "Restar fuente de luz"  (para accionExit)
+
     public string accionEnter = "";
     public string accionExit = "";
     void Start()
@@ -18,7 +25,9 @@ public class AccionTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider otro)
     {
         if(otro.tag == "Player" && accionEnter!="")
-            if(estalactitas==null)
+        {
+            Debug.Log("Entra jugador; "+accionEnter);
+            if(estalactitas.Length==0)
                 mt.AccionTrigger(null,accionEnter);
             else if(accionEnter=="Cae una estalactita")
                 {
@@ -27,11 +36,15 @@ public class AccionTrigger : MonoBehaviour
                         estal.ActivarCaida();
                     }
                 }
+        }
     }
 
     private void OnTriggerExit(Collider otro)
     {
         if(otro.tag == "Player" && accionExit!="")
+        {
+            Debug.Log("Sale jugador; "+accionExit);
             mt.AccionTrigger(null,accionExit);  
+        }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3526043869951706947}
   - component: {fileID: 3991806973532614688}
   - component: {fileID: 3991806973532614689}
-  - component: {fileID: 5333637047294271007}
+  - component: {fileID: 5351342257503743234}
   m_Layer: 0
   m_Name: curacion
   m_TagString: Untagged
@@ -60,10 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602c4052491a09d4089b645438eac435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundPila: {fileID: 0}
+  Item: {fileID: 5351342257503743234}
   tipoObjeto: Curacion
   valorObjeto: 20
---- !u!82 &5333637047294271007
+--- !u!82 &5351342257503743234
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9fbfdbf48a1f60a47906a2c10d9e4e10, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -5,22 +5,21 @@ using UnityEngine;
 public class CodigoItem : MonoBehaviour
 {
 
-    public AudioSource SoundPila;
+    public AudioSource Item;
     //Valores posibles se tipoObjeto: "Comida", "Curacion", "PilaLinterna", "Seta"
     public string tipoObjeto;
     public float valorObjeto;
 
-
     void Start()
     {
-        SoundPila = GetComponent<AudioSource>();
+        
+        Item = GetComponent<AudioSource>();
     }
-
     private void OnTriggerEnter(Collider otro)
     {
         if(otro.tag == "Player")
         {
-            SoundPila.Play();
+            Item.Play();
             otro.gameObject.GetComponent<RecursosJugador>().SumarContador(tipoObjeto,valorObjeto);
             Destroy(this.gameObject);
         }

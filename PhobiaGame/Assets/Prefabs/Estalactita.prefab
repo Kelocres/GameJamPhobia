@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6031403125367260402}
   - component: {fileID: 6031403125367260401}
   - component: {fileID: 6031403125367260405}
-  - component: {fileID: 8531853984830650871}
+  - component: {fileID: 6403951170255860712}
   m_Layer: 0
   m_Name: Estalactita
   m_TagString: Untagged
@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa47249e4e6f304384b9956aad3f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundEst: {fileID: 0}
+  Est: {fileID: 6403951170255860712}
   retrasoCaida: 0
---- !u!82 &8531853984830650871
+--- !u!82 &6403951170255860712
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5b6f54503450f9240980b73110d12df4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.7
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

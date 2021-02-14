@@ -16,10 +16,11 @@ public class RecursosJugador : MonoBehaviour
     private int intervalo_hambre = 3;
     public BarraCanvas barraHambre;
 
-    //Variables para la ansiedad (si la implementamos)
+    //Variables para la ansiedad 
     private float ansiedad_max = 100f;
     public float ansiedad_actual;
-    private int intervalo_ansiedad = 3;
+    private int intervalo_ansiedad = 1;
+    private int cuentaLuces;
 
     //Variables para la linterna
     private float pilaLinterna_max = 20f;
@@ -45,6 +46,7 @@ public class RecursosJugador : MonoBehaviour
 
         contadorTiempo = 0f;
         contadorSegundos = 0;
+        cuentaLuces = 0;
 
         linterna = GetComponentInChildren<ControlLinterna>();
         controlMutacion = GetComponent<ControlMutacionJugador>();
@@ -74,6 +76,8 @@ public class RecursosJugador : MonoBehaviour
         if(contadorSegundos % intervalo_hambre == 0)  DescontarHambre(2f);
 
         if(linterna.encendida && contadorSegundos % intervalo_pilaLinterna == 0) DescontarLinterna(2f);
+
+        if(contadorSegundos % intervalo_ansiedad == 0)    ContarAnsiedad();
     }
 
     void DescontarHambre(float intro)
@@ -89,6 +93,23 @@ public class RecursosJugador : MonoBehaviour
         pilaLinterna_actual -= intro;
         barraLinterna.SetValor(pilaLinterna_actual);
         if(pilaLinterna_actual <= 0f) linterna.Apagar();
+    }
+
+    void ContarAnsiedad()
+    {
+        if(!linterna.encendida && cuentaLuces<=0)
+        {
+            ansiedad_actual -= 3f;
+            Debug.Log("Ansiedad: "+ ansiedad_actual);
+            if(ansiedad_actual <= 0f)
+                Debug.Log("Has muerto de ansiedad");
+        }
+        else if(cuentaLuces > 0)
+        {
+            ansiedad_actual += 3f;
+            if(ansiedad_actual > ansiedad_max)  ansiedad_actual = ansiedad_max;
+            Debug.Log("Ansiedad: "+ ansiedad_actual);
+        }
     }
 
     public void SumarContador(string tipoValor, float valor)
@@ -126,5 +147,19 @@ public class RecursosJugador : MonoBehaviour
         {
             //Muerte y game over
         }
+    }
+
+    private void OnTriggerEnter(Collider otro)
+    {
+        if(otro.tag=="Fuego") 
+        {  
+            Debug.Log("Has encontrado una fuente de luz");
+            cuentaLuces++;
+        }
+    }
+
+    private void OnTriggerExit(Collider otro)
+    {
+        if(otro.tag=="Fuego")   cuentaLuces --;
     }
 }

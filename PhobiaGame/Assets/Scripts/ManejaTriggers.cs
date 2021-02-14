@@ -16,12 +16,17 @@ public class ManejaTriggers : MonoBehaviour
         
     }
 
-    public void AccionTrigger(GameObject trigger, string mensaje)
+    public void AccionTrigger(CodigoEstalactita estalactita, string mensaje)
     {
         //En caso de que sea un trigger que indique que el monstruo va a perseguir al jugador
         if(mensaje == "El monstruo empieza a perseguir")
         {
             FindObjectOfType<ControlMonstruo>().EmpezarPersecucion();
+        }
+
+        if(mensaje == "Cae una estalactita" && estalactita!=null)
+        {
+            estalactita.ActivarCaida();
         }
     }
 }

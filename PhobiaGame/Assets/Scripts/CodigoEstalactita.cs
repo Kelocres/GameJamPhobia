@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CodigoEstalactita : MonoBehaviour
 {
-
+    public AudioSource SoundEst;
     private Rigidbody rigi;
     public float retrasoCaida = 0f;
     bool activada = false;
@@ -12,6 +12,7 @@ public class CodigoEstalactita : MonoBehaviour
 
     void Start()
     {
+        SoundEst = GetComponent<AudioSource>();
         rigi = GetComponent<Rigidbody>();
         contadorTiempo = 0f;
     }
@@ -31,6 +32,7 @@ public class CodigoEstalactita : MonoBehaviour
     {
         //rigi.useGravity = true;
         activada = true;
+        SoundEst.Play();
     }
 
     private void OnTriggerEnter(Collider otro)

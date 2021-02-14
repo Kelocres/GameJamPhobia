@@ -7,7 +7,7 @@ public class MenuInicial : MonoBehaviour
 {
    public void PlayGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("VideoIntro");
     }
 
     public void QuitGame()

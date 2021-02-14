@@ -6,15 +6,31 @@ public class CodigoEstalactita : MonoBehaviour
 {
 
     private Rigidbody rigi;
+    public float retrasoCaida = 0f;
+    bool activada = false;
+    private float contadorTiempo;
+
     void Start()
     {
         rigi = GetComponent<Rigidbody>();
+        contadorTiempo = 0f;
+    }
+
+    void Update()
+    {
+        if(activada)
+        {
+            contadorTiempo += Time.deltaTime;
+            if(contadorTiempo > retrasoCaida)
+                rigi.useGravity = true;
+        }
     }
 
     // Update is called once per frame
     public void ActivarCaida()
     {
-        rigi.useGravity = true;
+        //rigi.useGravity = true;
+        activada = true;
     }
 
     private void OnTriggerEnter(Collider otro)
@@ -26,7 +42,7 @@ public class CodigoEstalactita : MonoBehaviour
         }
         else if(otro.tag == "Player")
         {
-            otro.GetComponent<RecursosJugador>().RestarVida(10f);
+            otro.GetComponent<RecursosJugador>().RestarVida(20f);
             //Efecto partículas
             Destroy(this.gameObject);
         }
